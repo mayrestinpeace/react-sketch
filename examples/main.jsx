@@ -116,6 +116,7 @@ class SketchFieldDemo extends React.Component {
 
     this.state = {
       lineWidth: 10,
+      opacity: 1,
       lineColor: 'black',
       fillColor: '#68CCCA',
       backgroundColor: 'transparent',
@@ -346,6 +347,7 @@ class SketchFieldDemo extends React.Component {
               ref={c => (this._sketch = c)}
               lineColor={this.state.lineColor}
               lineWidth={this.state.lineWidth}
+              opacity={this.state.opacity}
               fillColor={
                 this.state.fillWithColor
                   ? this.state.fillColor
@@ -412,6 +414,15 @@ class SketchFieldDemo extends React.Component {
                     value={this.state.lineWidth}
                     onChange={(e, v) =>
                       this.setState({ lineWidth: v })
+                    }
+                  />
+                  <Typography id="slider">Opacity</Typography>
+                  <Slider
+                    step={0.1} min={0} max={1}
+                    aria-labelledby="slider"
+                    value={this.state.opacity}
+                    onChange={(e, v) =>
+                      this.setState({ opacity: v })
                     }
                   />
                   <br/>

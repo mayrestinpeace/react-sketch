@@ -14,6 +14,8 @@ class Arrow extends FabricCanvasTool {
     this._color = props.lineColor;
   }
 
+  
+
   doMouseDown(o) {
     this.isDown = true;
     let canvas = this._canvas;

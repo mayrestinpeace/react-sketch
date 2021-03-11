@@ -687,13 +687,14 @@ class SketchField extends PureComponent {
 
       this._resize()
     }
-
+    this._selectedTool = this._tools[this.props.tool];
+    if (this._selectedTool) {
+      this._selectedTool.configureCanvas(this.props);
+    }
     if (this.props.tool !== prevProps.tool) {
-      this._selectedTool = this._tools[this.props.tool];
       //Bring the cursor back to default if it is changed by a tool
       this._fc.defaultCursor = 'default';
-      if(this._selectedTool){
-        this._selectedTool.configureCanvas(this.props);
+      if (this._selectedTool) {
         if (this.props.tool !== Tool.Eraser) {
           let ctx = this._canvas.getContext("2d");
           ctx.globalCompositeOperation="source-over";

@@ -67,7 +67,10 @@ export const uuid4 = () => {
  * Return a rgba equivalent of given hex.
  * @returns {string} 
  */
-export const hexToRgbA = (hex) => {
+export const hexToRgbA = (hex, opacity) => {
+  if (!opacity) {
+    opacity = 0.4
+  }
   var c;
   if (/^#([A-Fa-f0-9]{3}){1,2}$/.test(hex)) {
     c = hex.substring(1).split('');
@@ -75,7 +78,7 @@ export const hexToRgbA = (hex) => {
       c = [c[0], c[0], c[1], c[1], c[2], c[2]];
     }
     c = '0x' + c.join('');
-    return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',0.4)';
+    return 'rgba(' + [(c >> 16) & 255, (c >> 8) & 255, c & 255].join(',') + ',' + opacity + ')';
   }
   throw new Error('Bad Hex');
 }
