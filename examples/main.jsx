@@ -146,6 +146,7 @@ class SketchFieldDemo extends React.Component {
       expandControlled: false,
       text: 'a text, cool!',
       enableCopyPaste: false,
+      fontSize: 16
     };
   }
 
@@ -369,6 +370,14 @@ class SketchFieldDemo extends React.Component {
               forceValue
               onChange={this._onSketchChange}
               tool={this.state.tool}
+              setTool={(tool) => {
+                this.setState({
+                  tool: tool,
+                  enableRemoveSelected: tool === Tools.Select,
+                  enableCopyPaste: tool === Tools.Select
+                })
+              }}
+              fontSize={this.state.fontSize}
             />
           </div>
           <div className="col-xs-5 col-sm-5 col-md-3 col-lg-3">
@@ -400,8 +409,9 @@ class SketchFieldDemo extends React.Component {
                         <MenuItem value={Tools.Circle} key="Circle">Circle</MenuItem>
                         <MenuItem value={Tools.Pan} key="Pan">Pan</MenuItem>
                         <MenuItem value={Tools.Highlighter} key="Highlighter">Highlighter</MenuItem>
-                        <MenuItem value={Tools.RectangleLabel} key="Pan">RectangleLabel</MenuItem>
+                        <MenuItem value={Tools.RectangleLabel} key="RectangleLabel">RectangleLabel</MenuItem>
                         <MenuItem value={Tools.Eraser} key="Eraser">Eraser</MenuItem>
+                        <MenuItem value={Tools.Text} key="Text">Text</MenuItem>
                       </TextField>
                     </div>
                   </div>
@@ -425,6 +435,26 @@ class SketchFieldDemo extends React.Component {
                       this.setState({ opacity: v })
                     }
                   />
+                   <div className="col-lg-12">
+                      <TextField
+                        select={true}
+                        label="Text Size"
+                        value={this.state.fontSize}
+                        onChange={(event)=>this.setState({fontSize: event.target.value})}
+                        helperText="Please select text size">
+                        <MenuItem value={8} key="8">8</MenuItem>
+                        <MenuItem value={10} key="10">10</MenuItem>
+                        <MenuItem value={12} key="12">12</MenuItem>
+                        <MenuItem value={14} key="14">14</MenuItem>
+                        <MenuItem value={16} key="16">16</MenuItem>
+                        <MenuItem value={18} key="18">18</MenuItem>
+                        <MenuItem value={20} key="20">20</MenuItem>
+                        <MenuItem value={22} key="22">22</MenuItem>
+                        <MenuItem value={24} key="24">24</MenuItem>
+                        <MenuItem value={26} key="26">26</MenuItem>
+                        <MenuItem value={28} key="28">28</MenuItem>
+                      </TextField>
+                    </div>
                   <br/>
                   <label htmlFor="zoom">Zoom</label>
                   <div>

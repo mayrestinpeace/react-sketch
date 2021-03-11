@@ -16,6 +16,7 @@ import Highlighter from './highlighter';
 import RectangleLabel from './rectangle-label';
 import DefaultTool from './defaul-tool';
 import Eraser from './eraser';
+import Text from './text';
 
 const fabric = require('fabric').fabric;
 
@@ -82,6 +83,8 @@ class SketchField extends PureComponent {
     className: PropTypes.string,
     // Style options to pass to container div of canvas
     style: PropTypes.object,
+    setTool: PropTypes.func,
+    fontSize: PropTypes.number,
   };
 
   static defaultProps = {
@@ -104,7 +107,8 @@ class SketchField extends PureComponent {
     onMouseOut:()=>null,
     onObjectMoving:()=>null,
     onObjectScaling:()=>null,
-    onObjectRotating:()=>null,
+    onObjectRotating: () => null,
+    fontSize: 16
   };
 
   state = {
@@ -122,6 +126,7 @@ class SketchField extends PureComponent {
     this._tools[Tool.Pan] = new Pan(fabricCanvas);
     this._tools[Tool.Highlighter] = new Highlighter(fabricCanvas);
     this._tools[Tool.Eraser] = new Eraser(fabricCanvas);
+    this._tools[Tool.Text] = new Text(fabricCanvas);
     this._tools[Tool.DefaultTool] = new DefaultTool(fabricCanvas);
   };
 
@@ -710,6 +715,10 @@ class SketchField extends PureComponent {
       this.fromJSON(this.props.value);
     }
   };
+
+  changeSelectedTool = (tool)=>{
+    this._selectedTool = this._tools[tool]
+  }
 
   render = () => {
     let {

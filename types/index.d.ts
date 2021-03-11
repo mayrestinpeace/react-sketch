@@ -12,6 +12,7 @@ declare module 'react-sketch' {
 		Pan: string;
 		DefaultTool: string;
 		Eraser: string;
+		Texr: string;
 	} = {
 		Circle: 'circle',
 		Line: 'line',
@@ -22,7 +23,8 @@ declare module 'react-sketch' {
 		Select: 'select',
 		Pan: 'pan',
 		DefaultTool: 'default-tool',
-		Eraser: 'eraser'
+		Eraser: 'eraser',
+		Text: 'text'
 	}
 	export class SketchField extends React.PureComponent<{
 		// the color of the line
