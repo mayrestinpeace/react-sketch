@@ -1,26 +1,28 @@
 declare module 'react-sketch' {
 	import * as React from 'react'
-	
-	export const  Tools: {
-	    Circle: string;
-	    Line: string;
-	    Arrow: string;
-	    Pencil: string;
-	    Rectangle: string;
-	    RectangleLabel: string;
-	    Select: string;
-	    Pan: string;
-	    DefaultTool: string;
+
+	export const Tools: {
+		Circle: string;
+		Line: string;
+		Arrow: string;
+		Pencil: string;
+		Rectangle: string;
+		RectangleLabel: string;
+		Select: string;
+		Pan: string;
+		DefaultTool: string;
+		Eraser: string;
 	} = {
-	    Circle: 'circle',
-	    Line: 'line',
-	    Arrow: 'arrow',
-	    Pencil: 'pencil',
-	    Rectangle: 'rectangle',
-	    RectangleLabel: 'rectangle-label',
-	    Select: 'select',
-	    Pan: 'pan',
-	    DefaultTool: 'default-tool',
+		Circle: 'circle',
+		Line: 'line',
+		Arrow: 'arrow',
+		Pencil: 'pencil',
+		Rectangle: 'rectangle',
+		RectangleLabel: 'rectangle-label',
+		Select: 'select',
+		Pan: 'pan',
+		DefaultTool: 'default-tool',
+		Eraser: 'eraser'
 	}
 	export class SketchField extends React.PureComponent<{
 		// the color of the line
@@ -199,8 +201,8 @@ declare module 'react-sketch' {
 			stretchedY?: boolean
 			[name: string]: any
 		}): void
-		
+
 		addText(text: string, options?: {}): void
-		
+
 	}
 }

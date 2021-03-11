@@ -15,6 +15,7 @@ import Tool from './tools';
 import Highlighter from './highlighter';
 import RectangleLabel from './rectangle-label';
 import DefaultTool from './defaul-tool';
+import Eraser from './eraser';
 
 const fabric = require('fabric').fabric;
 
@@ -120,6 +121,7 @@ class SketchField extends PureComponent {
     this._tools[Tool.Circle] = new Circle(fabricCanvas);
     this._tools[Tool.Pan] = new Pan(fabricCanvas);
     this._tools[Tool.Highlighter] = new Highlighter(fabricCanvas);
+    this._tools[Tool.Eraser] = new Eraser(fabricCanvas);
     this._tools[Tool.DefaultTool] = new DefaultTool(fabricCanvas);
   };
 
@@ -692,6 +694,10 @@ class SketchField extends PureComponent {
       this._fc.defaultCursor = 'default';
       if(this._selectedTool){
         this._selectedTool.configureCanvas(this.props);
+        if (this.props.tool !== Tool.Eraser) {
+          let ctx = this._canvas.getContext("2d");
+          ctx.globalCompositeOperation="source-over";
+        }
       }
     }
 
