@@ -17,6 +17,7 @@ import RectangleLabel from './rectangle-label';
 import DefaultTool from './defaul-tool';
 import Eraser from './eraser';
 import Text from './text';
+import Stamp from './stamp';
 
 const fabric = require('fabric').fabric;
 
@@ -128,6 +129,7 @@ class SketchField extends PureComponent {
     this._tools[Tool.Eraser] = new Eraser(fabricCanvas);
     this._tools[Tool.Text] = new Text(fabricCanvas);
     this._tools[Tool.DefaultTool] = new DefaultTool(fabricCanvas);
+    this._tools[Tool.Stamp] = new Stamp(fabricCanvas);
   };
 
   /**

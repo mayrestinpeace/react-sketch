@@ -10,5 +10,6 @@ export default {
   Highlighter: 'highlighter',
   DefaultTool: 'default-tool',
   Eraser: 'eraser',
-  Text: 'text'
+  Text: 'text',
+  Stamp: 'stamp'
 }

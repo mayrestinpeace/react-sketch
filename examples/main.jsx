@@ -34,7 +34,7 @@ import ZoomInIcon from '@material-ui/icons/ZoomIn';
 import ZoomOutIcon from '@material-ui/icons/ZoomOut';
 import dataJson from './data.json';
 import dataJsonControlled from './data.json.controlled';
-import {SketchField, Tools} from '../src';
+import {SketchField, Tools, StampType} from '../src';
 import dataUrl from './data.url';
 import DropZone from 'react-dropzone';
 import Toolbar from '@material-ui/core/Toolbar/Toolbar';
@@ -146,7 +146,8 @@ class SketchFieldDemo extends React.Component {
       expandControlled: false,
       text: 'a text, cool!',
       enableCopyPaste: false,
-      fontSize: 16
+      fontSize: 16,
+      stampType: StampType
     };
   }
 
@@ -378,6 +379,7 @@ class SketchFieldDemo extends React.Component {
                 })
               }}
               fontSize={this.state.fontSize}
+              stampType={this.state.stampType}
             />
           </div>
           <div className="col-xs-5 col-sm-5 col-md-3 col-lg-3">
@@ -412,6 +414,7 @@ class SketchFieldDemo extends React.Component {
                         <MenuItem value={Tools.RectangleLabel} key="RectangleLabel">RectangleLabel</MenuItem>
                         <MenuItem value={Tools.Eraser} key="Eraser">Eraser</MenuItem>
                         <MenuItem value={Tools.Text} key="Text">Text</MenuItem>
+                        <MenuItem value={Tools.Stamp} key="Stamp">Stamp</MenuItem>
                       </TextField>
                     </div>
                   </div>
@@ -453,6 +456,21 @@ class SketchFieldDemo extends React.Component {
                         <MenuItem value={24} key="24">24</MenuItem>
                         <MenuItem value={26} key="26">26</MenuItem>
                         <MenuItem value={28} key="28">28</MenuItem>
+                      </TextField>
+                  </div>
+                  <div className="col-lg-12">
+                      <TextField
+                        select={true}
+                        label="Stamp type"
+                        value={this.state.stampType}
+                        onChange={(event)=>this.setState({stampType: event.target.value})}
+                        helperText="Please select Canvas Tool">
+                        <MenuItem value={StampType.Heart} key="Heart">Heart</MenuItem>
+                        <MenuItem value={StampType.Arrow} key="Arrow">Arrow</MenuItem>
+                        <MenuItem value={StampType.Check} key="Check">Check</MenuItem>
+                        <MenuItem value={StampType.Cross} key="Cross">Cross</MenuItem>
+                        <MenuItem value={StampType.Star} key="Star">Star</MenuItem>
+                        <MenuItem value={StampType.Question} key="Question">Question</MenuItem>
                       </TextField>
                     </div>
                   <br/>
